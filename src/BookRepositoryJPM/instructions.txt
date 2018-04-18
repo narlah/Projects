@@ -1,0 +1,66 @@
+Exercise Instructions
+=====================
+
+Library
+-------
+Contained within the test pack are 6 java files in the exercise.library package:
+
+    Book.java
+    BookRepository.java
+    BookRepositoryImpl.java
+    BookNotFoundException.java
+    BookService.java
+
+The following Books are stored within the repository (with dummy ISBN numbers in brackets):
+
+    Harry Potter and the Deathly Hallows [ISBN-001]
+    The Player of Games [ISBN-002]
+    Genius: Richard Feynman and Modern Physics [ISBN-003]
+
+Instructions
+------------
+In this problem you are required to complete the implementation of the BookService
+interface, a simple service that contains two methods.
+
+Method 1:
+
+    Book retrieveBook(String isbn) throws BookNotFoundException
+
+    Requirements:
+      o Should retrieve a book by its ISBN
+      o Should ensure that the isbn is prefixed by 'ISBN-'
+      o Should throw a BookNotFoundException where appropriate
+
+    Acceptance criteria:
+      o Input 'INVALID-TEXT' should throw an Exception, informing the client that the book isbn must begin with 'ISBN'.
+      o Input 'ISBN-777' should throw BookNotFoundException.
+      o Input 'ISBN-001' should return the book entitled 'Harry Potter and the Deathly Hallows'.
+
+
+Method 2:
+
+    String getBookSummary(String isbn) throws BookNotFoundException
+
+    Requirements:
+      o Should ensure that the isbn is prefixed by 'ISBN-'
+      o Should throw a BookNotFoundException where appropriate
+      o Should provide a book summary that concatenates the isbn, the title, and the first ten words of the review
+        followed by '...'
+
+    Acceptance criteria:
+      o Input 'INVALID-TEXT' should throw an Exception, informing the client that the book isbn must begin with 'ISBN'.
+      o Input 'ISBN-777' should throw BookNotFoundException.
+      o Input 'ISBN-001' should return '[ISBN-001] Harry Potter and the Deathly Hallows - Sorcery and Magic.'
+      o Input 'ISBN-002' should return '[ISBN-002] The Player of Games - Jernau Morat Gurgeh. The Player of Games. Master of every...'
+      o Input 'ISBN-003' should return '[ISBN-003] Genius: Richard Feynman and Modern Physics - A brilliant interweaving of Richard Feynman's colourful life and a...'
+
+
+Reference implementations of BookRepository and Book are included in the pack;
+any of the supplied files may be changed as you see fit.
+
+You may choose any means of accepting input and producing output, including the
+use of a testing framework.
+
+Please submit your solution as a zip file incorporating all your changes.
+
+Important: Please do not include any jar or class files in your submitted zip file - this will result in your email being dropped by security filters.
