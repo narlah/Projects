@@ -9,7 +9,7 @@
 <h2>Todo</h2>
 <div ng-controller="TodoListController as todoList">
     <span>{{todoList.remaining()}} of {{todoList.todos.length}} remaining</span>
-    [ <a href="" ng-click="todoList.archive()">archive</a> ]
+    <button type="button" ng-click="todoList.archive()">Archive</button>
     <ul class="unstyled">
         <li ng-repeat="todo in todoList.todos">
             <label class="checkbox">
@@ -23,29 +23,21 @@
                placeholder="add new todo here">
         <input class="btn-primary" type="submit" value="add">
     </form>
+
+    <br>
+    <br>
+    <h3>Archived:</h3>
+    <div class="borderline" >
+    <ul class="unstyled">
+        <li ng-repeat="oldTodo in  todoList.seriouslyOldTodos">
+            <label class="checkbox">
+                <span class="done-{{todo.done}}">{{oldTodo.text}}</span>
+                <button type="button" ng-click="todoList.permaDeleteArchive(oldTodo)">d</button>
+            </label>
+        </li>
+    </ul>
+    </div>
+
 </div>
 </body>
 </html>
-
-
-
-
-<!--<!doctype html>-->
-<!--<html ng-app="shortUrl">-->
-<!--<head>-->
-    <!--<title>Welcome Laconic</title>-->
-    <!--<link href="css/angular-bootstrap.css" rel="stylesheet">-->
-    <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.2/angular.min.js"></script>-->
-    <!--<script src="./js/shortUrl.js"></script>-->
-<!--</head>-->
-
-<!--<body>-->
-<!--<div ng-controller="MainController">-->
-    <!--<h1>Welcome {{message}}</h1>-->
-    <!--<label>Name:</label>-->
-    <!--<input type="text" ng-model="yourName" placeholder="Enter a name here">-->
-    <!--<hr>-->
-    <!--<h1>Hello {{yourName}}!</h1>-->
-<!--</div>-->
-<!--</body>-->
-<!--</html>-->
