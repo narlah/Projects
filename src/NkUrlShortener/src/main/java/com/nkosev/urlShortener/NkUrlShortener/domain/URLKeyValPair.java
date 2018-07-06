@@ -11,32 +11,32 @@ public class URLKeyValPair {
 
     @Id
     @Column
-    public String urlShortened;
+    public String shortenedUrl;
 
     @Column
-    public String urlOriginal;
+    public String originalUrl;
 
-    public URLKeyValPair(String urlShortened, String urlOriginal) {
-        this.urlShortened = urlShortened;
-        this.urlOriginal = urlOriginal;
+    public URLKeyValPair(String shortenedUrl, String originalUrl) {
+        this.shortenedUrl = shortenedUrl;
+        this.originalUrl = originalUrl;
     }
 
     public URLKeyValPair() {
     }
 
-    public String getUrlShortened() {
-        return urlShortened;
+    public String getShortenedUrl() {
+        return shortenedUrl;
     }
 
-    public void setUrlShortened(String urlShortened) {
-        this.urlShortened = urlShortened;
+    public void setShortenedUrl(String shortenedUrl) {
+        this.shortenedUrl = shortenedUrl;
     }
 
-    public String getUrlOriginal() {
-        return urlOriginal;
+    public String getOriginalUrl() {
+        return originalUrl;
     }
 
-    public void setUrlOriginal(String urlOriginal) {
-        this.urlOriginal = urlOriginal;
+    public void setOriginalUrl(String originalUrl) {
+        this.originalUrl = originalUrl;
     }
 }

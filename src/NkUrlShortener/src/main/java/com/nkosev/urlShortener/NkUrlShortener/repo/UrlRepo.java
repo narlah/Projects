@@ -6,5 +6,5 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.List;
 
 public interface UrlRepo extends CrudRepository<URLKeyValPair, String> {
-    List<URLKeyValPair> findByUrlOriginal(String originalUrl);
+    List<URLKeyValPair> findByOriginalUrl(String originalUrl);
 }

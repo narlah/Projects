@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,7 +31,7 @@ public class RestApiEndpoints {
         urlShortenedResponse.setShortenedUrl(shortUrl);
         if (urlRepo.existsById(shortUrl)) {
             Optional urlOptional = urlRepo.findById(shortUrl);
-            urlShortenedResponse.setOriginalUrl(((URLKeyValPair) urlOptional.get()).urlOriginal);
+            urlShortenedResponse.setOriginalUrl(((URLKeyValPair) urlOptional.get()).originalUrl);
         } else {
             urlShortenedResponse.setOriginalUrl("Nope , not in the database , you poor soul!");
         }
@@ -42,16 +43,25 @@ public class RestApiEndpoints {
         URLShortenedResponse urlShort = new URLShortenedResponse();
         urlShort.setOriginalUrl(shortThisRequest.getRequestThis());
         urlShort.setShortenedUrl(shortenUrl(shortThisRequest.getRequestThis()));
-        List<URLKeyValPair> list = urlRepo.findByUrlOriginal(shortThisRequest.getRequestThis());
+        List<URLKeyValPair> list = urlRepo.findByOriginalUrl(shortThisRequest.getRequestThis());
         if (list.size() == 0)
             urlRepo.save(new URLKeyValPair(urlShort.shortenedUrl, urlShort.originalUrl));
         else
-            urlShort.setShortenedUrl(list.get(0).urlShortened);
+            urlShort.setShortenedUrl(list.get(0).shortenedUrl);
         return urlShort;
     }
 
+    @RequestMapping(value = "/all", method = RequestMethod.GET)
+    public List<URLKeyValPair> getAll() {
+        Iterable<URLKeyValPair> iterable = urlRepo.findAll();
+        List<URLKeyValPair> result = new ArrayList<>();
+        iterable.forEach(result::add);
+        return result;
+    }
+
+
     @RequestMapping(value = "/author", method = RequestMethod.GET)
-    public String getAuthor(){
+    public String getAuthor() {
         return authorName;
     }
 

@@ -1,26 +1,30 @@
-angular.module('shortUrl', [])
-.controller('shortyC', function($scope, $http) {
+var mainApp = angular.module("shortUrl", []);
+mainApp.controller('shortyC', function($scope, $http) {
 
     $scope.shorten = function(){
-    //{"originalUrl":"asdasdasda","shortenedUrl":"[B@3ca10d26"}
     var shortyC = this;
         var res = $http.post('/smallUrl', {"requestThis":$scope.requestThis})
          .then(function onSuccess(response) {
-            // Handle success
-            var data = response.data;
-            shortyC.shortenedUrl = data.shortenedUrl;
-            shortyC.originalUrl = data.originalUrl;
+            shortyC.shortenedUrl = response.data.shortenedUrl;
+            shortyC.originalUrl = response.data.originalUrl;
           }).catch(function onError(response) {
-            // Handle error
-            var data = response.data;
-            var status = response.status;
-            var statusText = response.statusText;
-            var headers = response.headers;
-            shortyC.shortenedUrl = "Error " + status + statusText + headers;
-            shortyC.originalUrl = data.originalUrl;
-
+            shortyC.shortenedUrl = "Error " + response.status + response.statusText + response.headers;
+            shortyC.originalUrl = response.data.originalUrl;
           });
         $scope.requestThis = "";
-};
+    };
+});
 
+mainApp.controller('DbView', function($scope, $http) {
+    $scope.all = function(){
+    var DbView = this;
+        var res = $http.get('/smallUrl/all')
+         .then(function onSuccess(response) {
+            console.log(response.data);
+            DbView.allList = response.data;
+          }).catch(function onError(response) {
+            DbView.allList = ["Error " + response.status + response.statusText + response.headers];
+          });
+
+    };
 });
