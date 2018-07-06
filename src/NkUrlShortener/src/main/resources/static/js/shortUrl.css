@@ -1,0 +1,10 @@
+.done-true {
+  text-decoration: line-through;
+  color: grey;
+}
+
+.borderline {
+    border-style: dotted;
+    border-width: 1px;
+    width: 400px;
+}
