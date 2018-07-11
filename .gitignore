@@ -1,0 +1,8 @@
+*.iml
+*.idea/
+out/
+testQR/.idea/
+*.class
+/bin/*
+**/target/*
+*.swp
