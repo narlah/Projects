@@ -15,11 +15,10 @@ import javax.validation.Valid;
 @RestController
 public class RestEndpoints {
     @Autowired
-    MessageRequestRepository messageRepo;
+    MessageFactory factory;
 
     @RequestMapping(value = "/messages/{type}", method = RequestMethod.POST)
     public ResponseEntity<?> postPayload(@Valid @RequestBody PayloadBody body, @PathVariable String type) {
-        MessageFactory factory = new MessageFactory();
         Message message = factory.createMessage(type, body.getPayload());
         message.persist();
         return message.getResponseEntity();//override in a message class to get different responses
