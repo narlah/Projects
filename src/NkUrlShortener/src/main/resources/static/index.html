@@ -1,0 +1,30 @@
+<!doctype html>
+<html ng-app="shortUrl">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.2/angular.min.js"></script>
+    <script src="/js/shortUrl.js"></script>
+    <link rel="stylesheet" href="js/shortUrl.css">
+</head>
+<body>
+<h2>URL Short-it</h2>
+<div ng-controller="shortyC">
+    <input type="text" ng-model="requestThis">
+    <button ng-click="shorten()">Shorten!</button>
+    <p>Url Original is :  {{originalUrl}}</p>
+    <p>Url Shorten  is :  {{shortenedUrl}}</p>
+</div>
+
+<div ng-controller="DbView">
+    <button ng-click="all()">List</button>
+    <ul class="unstyled">
+        <li ng-repeat="url in allList">
+            <label >
+                <span>{{url.originalUrl}}</span> -->
+                <span>{{url.shortenedUrl}}</span>
+  <!--              <button type="button" ng-click="DbView.permaDeleteArchive(oldTodo)">d</button> -->
+            </label>
+        </li>
+    </ul>
+</div>
+</body>
+</html>
