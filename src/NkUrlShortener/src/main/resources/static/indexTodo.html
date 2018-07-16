@@ -1,0 +1,43 @@
+<!doctype html>
+<html ng-app="todoApp">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.2/angular.min.js"></script>
+    <script src="/js/todo.js"></script>
+    <link rel="stylesheet" href="/js/todo.css">
+</head>
+<body>
+<h2>Todo</h2>
+<div ng-controller="TodoListController as todoList">
+    <span>{{todoList.remaining()}} of {{todoList.todos.length}} remaining</span>
+    <button type="button" ng-click="todoList.archive()">Archive</button>
+    <ul class="unstyled">
+        <li ng-repeat="todo in todoList.todos">
+            <label class="checkbox">
+                <input type="checkbox" ng-model="todo.done">
+                <span class="done-{{todo.done}}">{{todo.text}}</span>
+            </label>
+        </li>
+    </ul>
+    <form ng-submit="todoList.addTodo()">
+        <input type="text" ng-model="todoList.todoText"  size="30"
+               placeholder="add new todo here">
+        <input class="btn-primary" type="submit" value="add">
+    </form>
+
+    <br>
+    <br>
+    <h3>Archived:</h3>
+    <div class="borderline" >
+    <ul class="unstyled">
+        <li ng-repeat="oldTodo in  todoList.seriouslyOldTodos">
+            <label class="checkbox">
+                <span class="done-{{todo.done}}">{{oldTodo.text}}</span>
+                <button type="button" ng-click="todoList.permaDeleteArchive(oldTodo)">d</button>
+            </label>
+        </li>
+    </ul>
+    </div>
+
+</div>
+</body>
+</html>
