@@ -19,6 +19,7 @@ public abstract class Message {
     @Getter(AccessLevel.PACKAGE)
     boolean valid;
 
+
     @Autowired
     MessageRequestRepository messageRepo;
 

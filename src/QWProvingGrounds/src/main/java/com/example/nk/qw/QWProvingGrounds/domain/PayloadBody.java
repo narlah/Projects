@@ -8,10 +8,11 @@ import javax.validation.constraints.NotNull;
 
 
 @ToString
+@Setter
+@Getter
 public class PayloadBody {
 
-    @Setter
-    @Getter
+
     @NotNull
     public String payload;
 }
