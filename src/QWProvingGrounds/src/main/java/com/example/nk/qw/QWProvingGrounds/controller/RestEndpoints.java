@@ -3,6 +3,7 @@ package com.example.nk.qw.QWProvingGrounds.controller;
 import com.example.nk.qw.QWProvingGrounds.domain.Message;
 import com.example.nk.qw.QWProvingGrounds.domain.MessageFactory;
 import com.example.nk.qw.QWProvingGrounds.domain.PayloadBody;
+import com.example.nk.qw.QWProvingGrounds.repositories.MessageRequestRepository;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +17,9 @@ public class RestEndpoints {
 
     @Autowired
     MessageFactory factory;
+
+    @Autowired
+    MessageRequestRepository messageRepo;
 
     @RequestMapping(value = "/messages/{type}", method = RequestMethod.POST)
     public ResponseEntity<?> postPayload(@Valid @RequestBody PayloadBody body, @PathVariable String type) {

@@ -8,11 +8,6 @@ import org.springframework.context.annotation.Bean;
 @SpringBootApplication
 public class QwProvingGroundsApplication {
 
-	@Bean
-	MessageFactory getFactory(){
-		return new MessageFactory();
-	}
-
 	public static void main(String[] args) {
 		SpringApplication.run(QwProvingGroundsApplication.class, args);
 	}
