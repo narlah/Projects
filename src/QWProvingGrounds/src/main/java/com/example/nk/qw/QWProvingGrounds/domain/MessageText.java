@@ -10,7 +10,7 @@ public class MessageText extends Message {
 
     @Override
     public boolean isValidMessage() {
-        System.out.println(this.getLen());
-        return this.getLen() >= 1 && this.getLen() <= 160; //this.payload.matches("^.{1,160}$");
+        int len = this.getLen();
+        return len >= 1 && len <= 160; //this.payload.matches("^.{1,160}$"); is slower i think
     }
 }

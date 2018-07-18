@@ -1,10 +1,8 @@
 package com.example.nk.qw.QWProvingGrounds.domain;
 
 import com.example.nk.qw.QWProvingGrounds.dbEntities.MessageRequest;
-import com.example.nk.qw.QWProvingGrounds.repositories.MessageRequestRepository;
 import lombok.AccessLevel;
 import lombok.Getter;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,14 +18,14 @@ public abstract class Message {
     @Getter(AccessLevel.PACKAGE)
     boolean valid;
 
-    public CrudRepository messageRepo;
+    private CrudRepository messageRepo;
 
     public Message(String type, String payload, CrudRepository messageRepo) {
         this.type = type;
         this.payload = payload;
-        this.valid = this.isValidMessage();
         this.len = payload.length();
         this.messageRepo = messageRepo;
+        this.valid = this.isValidMessage();
     }
 
 

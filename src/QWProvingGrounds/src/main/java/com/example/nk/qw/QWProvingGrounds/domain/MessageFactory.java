@@ -7,8 +7,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class MessageFactory {
 
-    @Autowired
     MessageRequestRepository messageRepository;
+
+    @Autowired
+    public void setMessageRepository(MessageRequestRepository messageRepository){
+        this.messageRepository = messageRepository;
+    }
     //<- Can Autowire additional crud repos, and can overload the persist method to store the info
     //in different formats and/or tables/dbs
 
