@@ -110,7 +110,7 @@ public class QwProvingGroundsApplicationTests {
 
     @Test
     public void correctEmotionSend1() throws Exception {
-        String payload = "corEmotion"; //length 10
+        String payload = "corEmotion"; //length exactly 10
         this.mockMvc.perform(
                 post("/messages/send_emotion")
                         .contentType("application/json;charset=UTF-8")
