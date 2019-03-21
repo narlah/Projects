@@ -1,13 +1,15 @@
 package com.example.nk.qw.QWProvingGrounds.domain;
 
 import com.example.nk.qw.QWProvingGrounds.repositories.MessageRequestRepository;
+import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class MessageFactory {
 
-    MessageRequestRepository messageRepository;
+    @Getter
+    private MessageRequestRepository messageRepository;
 
     @Autowired
     public void setMessageRepository(MessageRequestRepository messageRepository){

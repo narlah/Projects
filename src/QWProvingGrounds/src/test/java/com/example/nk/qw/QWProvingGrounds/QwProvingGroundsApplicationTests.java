@@ -140,9 +140,4 @@ public class QwProvingGroundsApplicationTests {
                 .andDo(print()).andExpect(status().is(HttpStatus.PRECONDITION_FAILED.value()))
                 .andExpect(content().contentType("text/plain;charset=UTF-8"));
     }
-
-
 }
-
-
-
