@@ -65,10 +65,10 @@ class RandomizeEngine {
     /**
      * Does the main work, shuffles the collected musical files and change names accordingly.
      *
-     * @param logFileFlag Flag for the log file
+     * @param isFolderSelected Flag for the log file
      * @throws IOException in case we can't read things ...
      */
-    void randomizeDir(boolean logFileFlag, final JProgressBar progressBar) throws IOException {
+    void randomizeDir(boolean isFolderSelected, final JProgressBar progressBar) throws IOException {
         Collections.shuffle(AllMusicFiles);
         int vectorLenght = AllMusicFiles.size();
 
@@ -102,14 +102,14 @@ class RandomizeEngine {
                 // rename files , comment this for testing purposes
                 boolean success = origNamedFile.renameTo(newNamedFile);
                 if (success) {
-                    logFileEngine.logSingleLine(tempList);
+                    logFileEngine.logText(tempList);
                 } else {
                     String[] tempListErr = {"There was a problem with renaming the file  ", "0", originalName};
-                    logFileEngine.logSingleLine(tempListErr);
+                    logFileEngine.logText(tempListErr);
                 }
             }
         }
-        logFileEngine.printTheLog(logFileFlag);
+        logFileEngine.dumpTheLog(isFolderSelected);
     }
 
     /**
