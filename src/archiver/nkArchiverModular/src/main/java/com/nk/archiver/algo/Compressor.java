@@ -1,4 +1,4 @@
-package com.nk.archiver.ui;
+package com.nk.archiver.algo;
 
 import java.io.IOException;
 import java.util.HashMap;

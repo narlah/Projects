@@ -1,10 +1,10 @@
-package com.nk.archiver;
+package com.nk.archiver.tools;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-class BTreePrinter {
+public class BTreePrinter {
 
   public static <T extends Comparable<?>> void printNode(Node root) {
     int maxLevel = BTreePrinter.maxLevel(root);

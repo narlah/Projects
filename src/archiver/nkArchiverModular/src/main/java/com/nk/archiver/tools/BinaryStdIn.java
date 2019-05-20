@@ -1,10 +1,10 @@
-package com.nk.archiver; /*************************************************************************
- *  Compilation:  javac com.nk.archiver.BinaryStdIn.java
- *  Execution:    java com.nk.archiver.BinaryStdIn < input > output
+package com.nk.archiver.tools; /*************************************************************************
+ *  Compilation:  javac com.nk.archiver.tools.BinaryStdIn.java
+ *  Execution:    java com.nk.archiver.tools.BinaryStdIn < input > output
  *
  *  Supports reading binary data from standard input.
  *
- *  % java com.nk.archiver.BinaryStdIn < input.jpg > output.jpg
+ *  % java com.nk.archiver.tools.BinaryStdIn < input.jpg > output.jpg
  *  % diff input.jpg output.jpg
  *
  *************************************************************************/
@@ -22,7 +22,7 @@ import java.io.IOException;
  * All primitive types are assumed to be represented using their standard Java representations, in
  * big-endian (most significant byte first) order.
  * <p>
- * The client should not intermix calls to <tt>com.nk.archiver.BinaryStdIn</tt> with calls to
+ * The client should not intermix calls to <tt>com.nk.archiver.tools.BinaryStdIn</tt> with calls to
  * <tt>StdIn</tt> or <tt>System.in</tt>; otherwise unexpected behavior will
  * result.
  *
@@ -61,7 +61,7 @@ public final class BinaryStdIn {
       in.close();
     } catch (IOException e) {
       e.printStackTrace();
-      throw new RuntimeException("Could not close com.nk.archiver.BinaryStdIn");
+      throw new RuntimeException("Could not close com.nk.archiver.tools.BinaryStdIn");
     }
   }
 

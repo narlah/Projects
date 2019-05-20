@@ -1,4 +1,4 @@
-package com.nk.archiver.algo;
+package com.nk.archiver.tools;
 
 public class Node implements Comparable<Node> {
 
@@ -6,14 +6,14 @@ public class Node implements Comparable<Node> {
   private final char letter;
   public Node left, right;
 
-  Node(int freq, char letter, Node left, Node right) {
+  public Node(int freq, char letter, Node left, Node right) {
     this.freq = freq;
     this.letter = letter;
     this.left = left;
     this.right = right;
   }
 
-  boolean isLeaf() {
+  public boolean isLeaf() {
     assert (left == null && right == null) || (left != null && right != null);
     return left == null;
   }

@@ -1,10 +1,15 @@
+package com.nk.archiver;
+
+import com.nk.archiver.algo.Compressor;
+import com.nk.archiver.algo.GZipStreamCompresor;
+import com.nk.archiver.algo.HuffmanCompressor;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashMap;
 
-class ArchiveController {
+public class ArchiveController {
 
 
   private Compressor compressor;
@@ -13,14 +18,14 @@ class ArchiveController {
   private String inFile;
   private String outFile;
 
-  void changeCompressor(String compressorNameNew) {
+  public void changeCompressor(String compressorNameNew) {
     if (!this.compressorName.equals(compressorNameNew)) {
       this.compressorName = compressorNameNew;
       compressor = null;
     }
   }
 
-  void compress() throws IllegalArgumentException, IOException {
+  public void compress() throws IllegalArgumentException, IOException {
     if (compressorName != null && inFile != null && outFile != null) {
       switch (compressorName) {
         case "Huffman":
@@ -40,21 +45,21 @@ class ArchiveController {
     }
   }
 
-  String getInFile() {
+  public String getInFile() {
     return inFile;
   }
 
   /**
    * @param inFile the inFile to set
    */
-  void setInFile(String inFile) {
+  public void setInFile(String inFile) {
     this.inFile = inFile;
   }
 
   /**
    * @param extension File Extention
    */
-  String updateOutFileExtension(String extension) {
+  public String updateOutFileExtension(String extension) {
     if (outFile != null) {
       outFile = outFile + "." + extension;
     }
@@ -65,7 +70,7 @@ class ArchiveController {
     return outFile;
   }
 
-  String setOutFileFromIn(String inFileFullPath) {
+  public String setOutFileFromIn(String inFileFullPath) {
     Path p = Paths.get(inFileFullPath);
     Path folder = p.getParent();
     String newName = folder + File.separator + p.getFileName().toString() + ".nik";
@@ -73,18 +78,18 @@ class ArchiveController {
     return newName;
   }
 
-  HashMap<?, ?> getDataStructure() {
+  public HashMap<?, ?> getDataStructure() {
     return compressor.getDataStructure();
   }
 
-  String getCompressorName() {
+  public String getCompressorName() {
     return compressorName;
   }
 
   /**
    * @param compressorName the compressorName to set
    */
-  void setCompressorName(String compressorName) {
+  public void setCompressorName(String compressorName) {
     this.compressorName = compressorName;
   }
 

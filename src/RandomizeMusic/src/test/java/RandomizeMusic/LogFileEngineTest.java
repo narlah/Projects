@@ -12,7 +12,7 @@ import org.junit.Test;
 public class LogFileEngineTest {
 
   private static final String TEXT = "alabala";
-  private static final String FILE_NAME  = "tmp.txt";
+  private static final String FILE_NAME = "tmp.txt";
   private LogFileEngine engine;
 
   @Before
@@ -30,7 +30,7 @@ public class LogFileEngineTest {
 
     //Test
     Assert.assertNotNull(engine);
-    Assert.assertTrue(engine.logText(new String[] {TEXT, "1", TEXT+"1" }));
+    Assert.assertTrue(engine.logText(new String[]{TEXT, "1", TEXT + "1"}));
 
     ArrayList<String[]> logRecords = engine.returnLogRecords();
     Assert.assertFalse(logRecords.isEmpty());
@@ -39,14 +39,14 @@ public class LogFileEngineTest {
     Assert.assertTrue(record.length > 0);
     Assert.assertEquals(record[0], TEXT);
     Assert.assertEquals(record[1], "1");
-    Assert.assertEquals(record[2], TEXT+1);
+    Assert.assertEquals(record[2], TEXT + 1);
   }
 
   @Test
   public void testDumpTheLog() throws IOException {
     //Prepare
     Assert.assertNotNull(engine);
-    Assert.assertTrue(engine.logText(new String[] {TEXT, "1", TEXT+"1" }));
+    Assert.assertTrue(engine.logText(new String[]{TEXT, "1", TEXT + "1"}));
     engine.dumpTheLog(true);
     File file = new File(FILE_NAME);
 

@@ -3,7 +3,7 @@ package com.nk.archiver;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-import com.nk.archiver.LZ77;
+import com.nk.archiver.algo.LZ77;
 import org.junit.Before;
 import org.junit.Test;
 

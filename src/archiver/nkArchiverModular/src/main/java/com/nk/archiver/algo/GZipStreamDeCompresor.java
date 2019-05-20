@@ -1,4 +1,4 @@
-package com.nk.archiver.ui;
+package com.nk.archiver.algo;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -38,7 +38,7 @@ public final class GZipStreamDeCompresor extends DeCompressor {
 
   @Override
   public String toString() {
-    return getInFileName() + " -> " + "GZIP Stream com.nk.archiver.ui.Compressor" + " -> " + getOutFileName();
+    return getInFileName() + " -> " + "GZIP Stream com.nk.archiver.algo.Compressor" + " -> " + getOutFileName();
   }
 
 }

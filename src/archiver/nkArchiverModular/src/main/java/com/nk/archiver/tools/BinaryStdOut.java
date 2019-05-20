@@ -1,6 +1,6 @@
-package com.nk.archiver; /*************************************************************************
- *  Compilation:  javac com.nk.archiver.BinaryStdOut.java
- *  Execution:    java com.nk.archiver.BinaryStdOut
+package com.nk.archiver.tools; /*************************************************************************
+ *  Compilation:  javac com.nk.archiver.tools.BinaryStdOut.java
+ *  Execution:    java com.nk.archiver.tools.BinaryStdOut
  *
  *  Write binary data to standard output, either one 1-bit boolean,
  *  one 8-bit char, one 32-bit int, one 64-bit double, one 32-bit float,
@@ -22,7 +22,7 @@ import java.io.IOException;
  * <p>
  * The client must <tt>flush()</tt> the output stream when finished writing bits.
  * <p>
- * The client should not intermixing calls to <tt>com.nk.archiver.BinaryStdOut</tt> with calls to <tt>StdOut</tt> or
+ * The client should not intermixing calls to <tt>com.nk.archiver.tools.BinaryStdOut</tt> with calls to <tt>StdOut</tt> or
  * <tt>System.out</tt>; otherwise unexpected behavior will result.
  *
  * @author Robert Sedgewick

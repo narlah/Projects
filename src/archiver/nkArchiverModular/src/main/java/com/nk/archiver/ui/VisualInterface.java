@@ -1,5 +1,7 @@
-package com.nk.archiver;
+package com.nk.archiver.ui;
 
+import com.nk.archiver.ArchiveController;
+import com.nk.archiver.algo.HuffmanCompressor;
 import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
@@ -10,9 +12,14 @@ import org.eclipse.swt.custom.CTabFolder;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
-import org.eclipse.swt.widgets.*;
+import org.eclipse.swt.widgets.Combo;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.FileDialog;
+import org.eclipse.swt.widgets.Menu;
+import org.eclipse.swt.widgets.MenuItem;
+import org.eclipse.swt.widgets.Shell;
 
-class VisualInterface {
+public class VisualInterface {
 
   private ArchiveController controller = new ArchiveController();
   private CTabHuffmanCodesTabItem ctabFCodesItem;
@@ -21,10 +28,23 @@ class VisualInterface {
   private ShowCompressorWikiTabItem showCompressorWikiTabItem;
   private FileDialog fd;
 
+  public enum compressionTypes {
+    Huffman("nik"), GZiPStream("zip"), LZ77("lz7"), Something_Else("arc");
+    private final String fileExtension;
+
+    compressionTypes(String type) {
+      this.fileExtension = type;
+    }
+
+    public String getExtension() {
+      return fileExtension;
+    }
+  }
+
   /**
    * @wbp.parser.entryPoint
    */
-  Shell initUI() {
+  public Shell initUI() {
     Display display = new Display();
     //JFrame frame = new JFrame();
     final Shell shell = new Shell(display, SWT.NO_REDRAW_RESIZE | SWT.CLOSE | SWT.BORDER);
@@ -68,7 +88,30 @@ class VisualInterface {
     fileMenuOpen.setText("Open");
 
     MenuItem fileMenuClose = new MenuItem(menu_1, SWT.NONE);
-    fileMenuClose.addSelectionListener(new     class Open implements SelectionListener {
+    fileMenuClose.addSelectionListener(new SelectionAdapter() {
+      @Override
+      public void widgetSelected(SelectionEvent arg0) {
+        controller.setInFile(null);
+        inoutTabItem.changeInOut("", "");
+        inoutTabItem.setFolderFileLabel("");
+        inoutTabItem.addToTextArea("File Closed...");
+      }
+    });
+    fileMenuClose.setText("Close");
+
+    // menu item exit
+    MenuItem fileMenuExit = new MenuItem(menu_1, SWT.NONE);
+    fileMenuExit.setText("Exit");
+    fileMenuExit.addSelectionListener(new SelectionAdapter() {
+      @Override
+      public void widgetSelected(SelectionEvent arg0) {
+        inoutTabItem.addToTextArea("Exiting...");
+        System.exit(1);
+      }
+    });
+
+    // menu item open (File selector)
+    class Open implements SelectionListener {
 
       public void widgetSelected(SelectionEvent event) {
         fd = new FileDialog(shell, SWT.OPEN);
@@ -93,29 +136,6 @@ class VisualInterface {
       @Override
       public void widgetDefaultSelected(SelectionEvent arg0) {
       }
-    });
-    fileMenuClose.setText("Close");
-
-    // menu item exit
-    MenuItem fileMenuExit = new MenuItem(menu_1, SWT.NONE);
-    fileMenuExit.setText("Exit");
-    fileMenuExit.addSelectionListener(new SelectionAdapter() {
-      @Override
-      public void widgetSelected(SelectionEvent arg0) {
-        controller.setInFile(null);
-        inoutTabItem.changeInOut("", "");
-        inoutTabItem.setFolderFileLabel("");
-        inoutTabItem.addToTextArea("File Closed...");
-      }
-    });
-
-    // menu item open (File selector)
-SelectionAdapter() {
-      @Override
-      public void widgetSelected(SelectionEvent arg0) {
-        inoutTabItem.addToTextArea("Exiting...");
-        System.exit(1);
-      }
     }
 
     fileMenuOpen.addSelectionListener(new Open());
@@ -137,22 +157,27 @@ SelectionAdapter() {
       @Override
       public void widgetSelected(SelectionEvent arg0) {
         try {
+
           if (controller.getInFile() == null || Objects.equals(controller.getInFile(), "")) {
             inoutTabItem.addToTextArea("No file selected...");
             return;
           }
           controller.compress();
+
           for (int i = 0; i <= 100; i++) {
             inoutTabItem.addPercentageToProgressBar(i);
             Thread.sleep(10);
           }
           inoutTabItem.addToTextArea("File compressed!");
           ctabFCodesItem.initUI();
+
           if (controller.getCompressorName().equalsIgnoreCase("Huffman")) {
+
             ctabFCodesItem.fillTable((HashMap<Character, String>) controller.getDataStructure(),
                 ((HuffmanCompressor) controller.getCompressor()).getTreeToFile());
             inoutTabItem.addToTextArea("Huffman codes populated ...");
           }
+
           tabFolder.setSelection(0);
         } catch (IllegalArgumentException | IOException e) {
           System.out.println("Error " + e.getMessage());
@@ -174,7 +199,7 @@ SelectionAdapter() {
 
     // menu item ShowCodes
     // MenuItem menuShowCodes = new MenuItem(menu, SWT.NONE);
-    // menuShowCodes.setText("Show com.nk.archiver.Compressor info");
+    // menuShowCodes.setText("Show Compressor info");
 
     // Compress Selector combo
     final Combo comboCompressSelector = new Combo(shell, SWT.NONE);
@@ -203,18 +228,5 @@ SelectionAdapter() {
     comboCompressSelector.select(0);
 
     return shell;
-  }
-
-  public enum compressionTypes {
-    Huffman("nik"), GZiPStream("zip"), LZ77("lz7"), Something_Else("arc");
-    private final String fileExtension;
-
-    compressionTypes(String type) {
-      this.fileExtension = type;
-    }
-
-    public String getExtension() {
-      return fileExtension;
-    }
   }
 }

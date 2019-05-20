@@ -1,7 +1,7 @@
-package com.nk.archiver.ui;
+package com.nk.archiver.algo;
 
 import com.nk.archiver.tools.BinaryStdOut;
-import com.nk.archiver.algo.Node;
+import com.nk.archiver.tools.Node;
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.File;
@@ -14,12 +14,12 @@ import java.util.Map.Entry;
 import java.util.PriorityQueue;
 import java.util.stream.Collectors;
 
-final class HuffmanCompressor extends Compressor {
+public final class HuffmanCompressor extends Compressor {
 
   private HashMap<Character, String> codes = new HashMap<>();
   private LinkedHashMap<Character, Integer> treeToFile = new LinkedHashMap<>();
 
-  HuffmanCompressor(String inFile, String outFile) {
+  public HuffmanCompressor(String inFile, String outFile) {
     super(inFile, outFile);
   }
 
@@ -61,7 +61,7 @@ final class HuffmanCompressor extends Compressor {
 
   @Override
   public String toString() {
-    return getInFileName() + " -> " + "Huffman com.nk.archiver.ui.Compressor" + " -> " + getOutFileName();
+    return getInFileName() + " -> " + "Huffman com.nk.archiver.algo.Compressor" + " -> " + getOutFileName();
   }
 
   @SuppressWarnings("unchecked")
@@ -131,7 +131,7 @@ final class HuffmanCompressor extends Compressor {
     // testDebugWriteCodetoFile();
   }
   // // ************************************
-  // private void testDebugBuildCode(com.nk.archiver.algo.Node x, String s) {
+  // private void testDebugBuildCode(com.nk.archiver.tools.Node x, String s) {
   // if (Character.valueOf(x.getLetter()).equals('\r')) {
   // System.out.println("cr" + "            " + x.getFreq() + "          " + s);
   // } else {

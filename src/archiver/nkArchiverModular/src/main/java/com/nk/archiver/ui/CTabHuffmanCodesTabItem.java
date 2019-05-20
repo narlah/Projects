@@ -1,4 +1,4 @@
-package com.nk.archiver;
+package com.nk.archiver.ui;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -14,7 +14,7 @@ import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
 
-class CTabHuffmanCodesTabItem {
+public class CTabHuffmanCodesTabItem {
 
   private final Comparator<String[]> BY_CHAR = Comparator.comparing(o -> o[0]);
   private final Comparator<String[]> BY_ASCII = Comparator.comparing(o -> Integer.valueOf(o[1]));

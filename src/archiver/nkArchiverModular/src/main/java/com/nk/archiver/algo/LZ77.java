@@ -1,6 +1,6 @@
-package com.nk.archiver.ui;
+package com.nk.archiver.algo;
 
-class LZ77 {
+public class LZ77 {
 
   private char referencePrefix;
   private int referenceIntBase;
@@ -14,7 +14,7 @@ class LZ77 {
 
   // CONSTRUCTOR
 
-  LZ77() {
+  public LZ77() {
 
     referencePrefix = '`';
     referenceIntBase = 96;
@@ -43,22 +43,22 @@ class LZ77 {
   // PUBLIC METHODS
 
   /**
-   * Compress string data using the com.nk.archiver.ui.LZ77 algorithm.
+   * Compress string data using the com.nk.archiver.algo.LZ77 algorithm.
    *
    * @param data String data to compress
-   * @return com.nk.archiver.ui.LZ77 compressed string
+   * @return com.nk.archiver.algo.LZ77 compressed string
    */
-  String compress(String data) {
+  public String compress(String data) {
 
     return compress(data, null);
   }
 
   /**
-   * Compress string data using the com.nk.archiver.ui.LZ77 algorithm.
+   * Compress string data using the com.nk.archiver.algo.LZ77 algorithm.
    *
    * @param data String data to compress
    * @param windowLength Optional window length
-   * @return com.nk.archiver.ui.LZ77 compressed string
+   * @return com.nk.archiver.algo.LZ77 compressed string
    */
   private String compress(String data, Integer windowLength) {
 
@@ -142,7 +142,7 @@ class LZ77 {
     return compressed + data.substring(pos).replaceAll("/`/g", "``");
   }
 
-  String decompress(String data) {
+  public String decompress(String data) {
 
     String decompressed = "";
     int pos = 0;

@@ -1,4 +1,4 @@
-package com.nk.archiver;
+package com.nk.archiver.ui;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CTabFolder;
@@ -92,9 +92,9 @@ public class InOutTab {
     progressBar.setSelection(i);
   }
 
-  int getPercentageToProgressBar() {
-    return progressBar.getState();
-  }
+//  int getPercentageToProgressBar() {
+//    return progressBar.getState();
+//  }
 
   //    public void clearTextArea() {
 //        textArea.setText("");

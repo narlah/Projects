@@ -1,4 +1,4 @@
-package com.nk.archiver;
+package com.nk.archiver.ui;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CTabFolder;
@@ -6,7 +6,7 @@ import org.eclipse.swt.custom.CTabItem;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Text;
 
-class ShowCompressorWikiTabItem {
+public class ShowCompressorWikiTabItem {
 
   private CTabFolder ctabFolderBase; // add item with info here
   private String compressorName;
@@ -21,7 +21,7 @@ class ShowCompressorWikiTabItem {
 
   private void initUI() {
     compressorInfoTabItem = new CTabItem(ctabFolderBase, SWT.BORDER);
-    compressorInfoTabItem.setText("com.nk.archiver.Compressor Wiki");
+    compressorInfoTabItem.setText("com.nk.archiver.algo.Compressor Wiki");
 
     Composite compositeWiki = new Composite(ctabFolderBase, SWT.BORDER);
     compositeWiki.setLayout(null);
@@ -53,9 +53,9 @@ class ShowCompressorWikiTabItem {
                 + "The .ZIP file format was created by Phil Katz of PKWARE. He created the format after his company had lawsuits filed against him by Systems Enhancement Associates (SEA) claiming that his archiving products were derivatives of SEA's ARC archiving system. The name \"zip\" (meaning \"move at high speed\") was suggested by Katz's friend, Robert Mahoney. They wanted to imply that their product would be faster than ARC and other compression formats of the time. The earliest known version of .ZIP File Format Specification was first published as part of PKZIP 0.9 package under the file APPNOTE.TXT in 1989."
                 + "The .ZIP file format was released into the public domain, but some ZIP features are covered by patents or pending patents.");
         break;
-      case "com.nk.archiver.LZ77":
+      case "com.nk.archiver.algo.LZ77":
         label.setText(
-            "com.nk.archiver.LZ77\n\n com.nk.archiver.LZ77 and LZ78 are the two lossless data compression algorithms published in papers by Abraham Lempel and Jacob Ziv in 1977 and 1978. They are also known as LZ1 and LZ2 respectively. These two algorithms form the basis for many variations including LZW, LZSS, LZMA and others. Besides their academic influence, these algorithms formed the basis of several ubiquitous compression schemes, including GIF and the DEFLATE algorithm used in PNG. They are both theoretically dictionary coders. com.nk.archiver.LZ77 maintains a sliding window during compression. This was later shown to be equivalent to the explicit dictionary constructed by LZ78�however, they are only equivalent when the entire data is intended to be decompressed. LZ78 decompression allows random access to the input as long as the entire dictionary is available, while com.nk.archiver.LZ77 decompression must always start at the beginning of the input.The algorithms were named an IEEE Milestone in 2004.\n\nTheoretical\n\n efficiencyIn the second of the two papers that introduced these algorithms they are analyzed as encoders defined by finite-state machines. A measure analogous to information entropy is developed for individual sequences (as opposed to probabilistic ensembles). This measure gives a bound on the compression ratio that can be achieved. It is then shown that there exist finite lossless encoders for every sequence that achieve this bound as the length of the sequence grows to infinity. In this sense an algorithm based on this scheme produces asymptotically optimal encodings. This result can be proved more directly, as for example in notes by Peter Shor.");
+            "com.nk.archiver.algo.LZ77\n\n com.nk.archiver.algo.LZ77 and LZ78 are the two lossless data compression algorithms published in papers by Abraham Lempel and Jacob Ziv in 1977 and 1978. They are also known as LZ1 and LZ2 respectively. These two algorithms form the basis for many variations including LZW, LZSS, LZMA and others. Besides their academic influence, these algorithms formed the basis of several ubiquitous compression schemes, including GIF and the DEFLATE algorithm used in PNG. They are both theoretically dictionary coders. com.nk.archiver.algo.LZ77 maintains a sliding window during compression. This was later shown to be equivalent to the explicit dictionary constructed by LZ78�however, they are only equivalent when the entire data is intended to be decompressed. LZ78 decompression allows random access to the input as long as the entire dictionary is available, while com.nk.archiver.algo.LZ77 decompression must always start at the beginning of the input.The algorithms were named an IEEE Milestone in 2004.\n\nTheoretical\n\n efficiencyIn the second of the two papers that introduced these algorithms they are analyzed as encoders defined by finite-state machines. A measure analogous to information entropy is developed for individual sequences (as opposed to probabilistic ensembles). This measure gives a bound on the compression ratio that can be achieved. It is then shown that there exist finite lossless encoders for every sequence that achieve this bound as the length of the sequence grows to infinity. In this sense an algorithm based on this scheme produces asymptotically optimal encodings. This result can be proved more directly, as for example in notes by Peter Shor.");
         break;
       default:
         label.setText("Empty");

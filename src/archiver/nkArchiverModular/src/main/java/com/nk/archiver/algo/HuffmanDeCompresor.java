@@ -1,7 +1,7 @@
-package com.nk.archiver.ui;
+package com.nk.archiver.algo;
 
 import com.nk.archiver.tools.BinaryStdIn;
-import com.nk.archiver.algo.Node;
+import com.nk.archiver.tools.Node;
 import java.io.BufferedInputStream;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -26,7 +26,7 @@ public final class HuffmanDeCompresor extends DeCompressor {
    *
    * @throws IOException in case there is a problem reading the file
    */
-  private void getFrequencesFromFile() throws IOException {
+  private void getFrequenciesFromFile() throws IOException {
     BinaryStdIn reader = new BinaryStdIn(
         new BufferedInputStream(new FileInputStream(new File(getInFileName()))));
     treeFromFile = new LinkedHashMap<>();
@@ -54,31 +54,15 @@ public final class HuffmanDeCompresor extends DeCompressor {
     return queue.remove();
   }
 
-  // // temporary printing the codes - debugging purposes
-  // private void testDebugbuildCode(com.nk.archiver.algo.Node x, String s) {
-  // if (!x.isLeaf()) {
-  // buildCode(x.left, s + '0');
-  // buildCode(x.right, s + '1');
-  // } else {
-  // // > debug test temp
-  // if (Character.valueOf(x.getLetter()).equals('\r')) {
-  // System.out.println("cr" + " " + x.getFreq() + " " + s);
-  // } else {
-  // System.out.println("'"+x.getLetter() + "' " + x.getFreq() + " " + s);
-  // }
-  // // < debug test temp
-  // }
-  // }
-
   /**
-   * Skip the header info.Did not want to use the same reader in getFrequencesFromFile as this would
+   * Skip the header info.Did not want to use the same reader in getFrequenciesFromFile as this would
    * make possible to stale and block the file handler
    *
    * @throws IOException IOException
    */
   @Override
   public void decode() throws IOException {
-    getFrequencesFromFile();
+    getFrequenciesFromFile();
     Node treeRoot = buildTree();
     // testDebugbuildCode(treeRoot,"");
 
@@ -110,6 +94,6 @@ public final class HuffmanDeCompresor extends DeCompressor {
 
   @Override
   public String toString() {
-    return getOutFileName() + " -> " + "Huffman DE com.nk.archiver.ui.Compressor" + " -> " + getInFileName();
+    return getOutFileName() + " -> " + "Huffman DE com.nk.archiver.algo.Compressor" + " -> " + getInFileName();
   }
 }

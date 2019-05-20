@@ -1,4 +1,4 @@
-package com.nk.archiver.ui;
+package com.nk.archiver.algo;
 
 public abstract class Base_xpressor_abstract {
 

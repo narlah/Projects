@@ -61,8 +61,9 @@ class LogFileEngine {
       logBuffer.clear();
     } catch (FileNotFoundException f) {
       System.out.println("Could not write a log file. File not found " + logFile.getAbsolutePath());
-    } catch (UnsupportedEncodingException unsupCode) {
-      System.out.println("Unsupported encoding : " + encoding);
+    } catch (UnsupportedEncodingException unsupportedEncodingException) {
+      System.out.println(
+          "Unsupported encoding : " + encoding + unsupportedEncodingException.getMessage());
     }
 
   }
